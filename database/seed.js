@@ -53,8 +53,8 @@ const seed = function() {
         }
     });
 
-  for(let i = 0; i < 2000; i++){
-    writeRecords(10000)
+  for(let i = 0; i < 20000; i++){
+    writeRecords(1000)
     console.log(`${id} of 20 million done`)
   }
 }
