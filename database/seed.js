@@ -28,7 +28,7 @@ var records = ``
 
 
 function writeTwentyMillionTimes(writer) {
-  let i = 20000;
+  let i = 20000000;
   let chunk = 1000;
   let max = i;
   write();
