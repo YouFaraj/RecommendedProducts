@@ -2,3 +2,4 @@ node_modules
 Alan
 newrelic.js
 main.js
+.DS_Store

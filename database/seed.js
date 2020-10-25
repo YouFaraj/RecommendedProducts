@@ -16,18 +16,8 @@ const brandsAndDepts = function() {
   }
 }
 
-// the records bellow follow this schema :
-// id,title,brand,department,price,imageUrl,productUrl
-const generateRecords = function(num) {
-var records = ``
-  for(let i = 0; i < num; i++){
-
-      }
-  return records;
-};
-
-
 function writeTwentyMillionTimes(writer) {
+  brandsAndDepts();
   let i = 20000000;
   let chunk = 1000;
   let max = i;
