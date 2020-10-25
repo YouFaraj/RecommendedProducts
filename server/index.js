@@ -1,10 +1,7 @@
 const express = require('express');
 const Sequelize = require('sequelize');
 const {Op} = require('sequelize');
-const sequelize = new Sequelize('products', 'ubuntu', 'pineapple', {
-  host: 'localhost',
-  dialect: 'postgres'
-})
+const sequelize = new Sequelize(`postgres://postgres:pineapple@localhost:5432/product`);
 const Product = require('../database/Product.js')
 const path = require('path');
 const axios = require('axios');
@@ -82,22 +79,19 @@ app.get('/products/price/:minPrice&:maxPrice', async (req, res) => {
 // grabs a product by id
 app.get('/products/id/:id', async (req, res) => {
   const productId = req.params.id
+  console.log(productId);
   try {
     const product = await Product.findAll({
-    where: {
-    id: productId
-    }
-  })
-    if(product.length > 0) {
-      let deptMatch = await axios.get(`/products/dept/${product[0].dataValues.department}`);
-      let brandMatch = await axios.get(`/products/brand/${product[0].dataValues.brand}`);
-      let priceMatch = await axios.get(`/products/price/${Math.floor(parseInt(product[0].dataValues.price.substring(1)) * 0.9)}&${Math.floor(parseInt(product[0].dataValues.price.substring(1)) * 1.1)}`);
-      const allResults = deptMatch.data.product.concat(brandMatch.data.product).concat(priceMatch.data.product);
-      res.send(allResults);
-    } else {
-      res.status(404).send('You failed your query')
-    }
-  } catch(error) {
+      where: {
+      id: productId
+      }
+    })
+    let deptMatch = await axios.get(`http://localhost:3003/products/dept/${product[0].dataValues.department}`);
+    let brandMatch = await axios.get(`http://localhost:3003/products/brand/${product[0].dataValues.brand}`);
+    let priceMatch = await axios.get(`http://localhost:3003/products/price/${Math.floor(parseInt(product[0].dataValues.price.substring(1)) * 0.9)}&${Math.floor(parseInt(product[0].dataValues.price.substring(1)) * 1.1)}`);
+    const allResults = deptMatch.data.product.concat(brandMatch.data.product).concat(priceMatch.data.product);
+    res.send(allResults);
+    } catch(error) {
     console.error(error)
   }
 })
