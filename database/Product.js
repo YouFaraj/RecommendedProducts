@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(`postgres://postgres:@3.132.216.71:5432/products`, {
+const sequelize = new Sequelize(`postgres://postgres:@localhost:5432/products`, {
   define: {
     // The `timestamps` field specify whether or not the `createdAt` and `updatedAt` fields will be created.
     // This was true by default, but now is false by default
