@@ -1,7 +1,7 @@
 const express = require('express');
 const Sequelize = require('sequelize');
 const {Op} = require('sequelize');
-const sequelize = new Sequelize('products', 'ubuntu', null, {
+const sequelize = new Sequelize('products', 'ubuntu', {
   host: 'localhost',
   dialect: 'postgres'
 })
