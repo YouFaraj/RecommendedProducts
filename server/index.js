@@ -86,9 +86,9 @@ app.get('/products/id/:id', async (req, res) => {
     }
   })
     if(product.length > 0) {
-      let deptMatch = await axios.get(`http://localhost:3003/products/dept/${product[0].dataValues.department}`);
-      let brandMatch = await axios.get(`http://localhost:3003/products/brand/${product[0].dataValues.brand}`);
-      let priceMatch = await axios.get(`http://localhost:3003/products/price/${Math.floor(parseInt(product[0].dataValues.price.substring(1)) * 0.9)}&${Math.floor(parseInt(product[0].dataValues.price.substring(1)) * 1.1)}`);
+      let deptMatch = await axios.get(`/products/dept/${product[0].dataValues.department}`);
+      let brandMatch = await axios.get(`/products/brand/${product[0].dataValues.brand}`);
+      let priceMatch = await axios.get(`/products/price/${Math.floor(parseInt(product[0].dataValues.price.substring(1)) * 0.9)}&${Math.floor(parseInt(product[0].dataValues.price.substring(1)) * 1.1)}`);
       const allResults = deptMatch.data.product.concat(brandMatch.data.product).concat(priceMatch.data.product);
       res.send(allResults);
     } else {
