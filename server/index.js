@@ -1,7 +1,7 @@
 const express = require('express');
 const Sequelize = require('sequelize');
 const {Op} = require('sequelize');
-const sequelize = new Sequelize(`postgres://ubuntu:@localhost:5432/products`)
+const sequelize = new Sequelize('products', 'ubunto');
 const Product = require('../database/Product.js')
 const path = require('path');
 const axios = require('axios');
