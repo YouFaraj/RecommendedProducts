@@ -14,12 +14,12 @@ export let options = {
 };
 
 export default function () {
-  http.get(`http://localhost:3003/products/id/${Math.floor(Math.random() * 1000000)}`);
+  http.get(`http://3.139.9.29/:3003/products/id/${Math.floor(Math.random() * 1000000)}`);
   let data = { id: 1 , title: "testing", brand: "alan" , department: "alan", price: 69.69, imageurl: "/#" , producturl: "/#" }
   var options = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
-  http.post('http://localhost:3003/api/products', JSON.stringify(data), options);
+  http.post('http://3.139.9.29:3003/api/products', JSON.stringify(data), options);
 }
