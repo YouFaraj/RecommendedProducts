@@ -3,3 +3,4 @@ Alan
 newrelic.js
 main.js
 .DS_Store
+.env

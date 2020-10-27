@@ -1,7 +1,8 @@
 const express = require('express');
 const Sequelize = require('sequelize');
 const {Op} = require('sequelize');
-const sequelize = new Sequelize(`postgres://postgres:pineapple@localhost:5432/product`);
+require('dotenv').config()
+const sequelize = new Sequelize(`postgres://postgres:${process.env.DB_PASS}@localhost:5432/product`);
 const Product = require('../database/Product.js')
 const path = require('path');
 const axios = require('axios');
