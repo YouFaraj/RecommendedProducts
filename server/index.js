@@ -105,12 +105,11 @@ const formatName = (string) => {
 
 //// SDC
 
-var counter = 1;
+
 // adds product
 app.post('/api/products', async (req, res) => {
   try {
     const newProduct = new Product(req.body)
-    newProduct.dataValues.id = await newProduct.dataValues.id + counter;
     await newProduct.save()
     res.send({ product: newProduct }) // Returns the new user that is created in the database
   } catch(error) {

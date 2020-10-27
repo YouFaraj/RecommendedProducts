@@ -1,7 +1,7 @@
 const faker = require('faker');
 const fs = require('fs');
 const file = fs.createWriteStream('./data/products_data.csv');
-file.write('id,title,brand,dept,price,imageurl,producturl' + '\n');
+file.write('title,brand,dept,price,imageurl,producturl' + '\n');
 
 var brands = [];
 var departments = [];
@@ -29,8 +29,7 @@ function writeTwentyMillionTimes(writer) {
       i--;
 
       ///// data gen /////
-      id = max - i;
-      data += `${id},"${faker.commerce.productName()}","${brands[ Math.floor( Math.random() * brands.length ) ]}","${departments[ Math.floor( Math.random() * departments.length ) ]}",${Number(faker.commerce.price(0, 100)) - Math.ceil(Math.random() * 5) / 100},"${faker.image.imageUrl()}","/${Math.floor(Math.random() * 100 % 100 + 1)}"\n`
+      data += `"${faker.commerce.productName()}","${brands[ Math.floor( Math.random() * brands.length ) ]}","${departments[ Math.floor( Math.random() * departments.length ) ]}",${Number(faker.commerce.price(0, 100)) - Math.ceil(Math.random() * 5) / 100},"${faker.image.imageUrl()}","/${Math.floor(Math.random() * 100 % 100 + 1)}"\n`
       ////////////////////
       if (i === 0) {
         // Last time!

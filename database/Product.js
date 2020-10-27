@@ -9,10 +9,6 @@ const sequelize = new Sequelize(`postgres://postgres:pineapple@localhost:5432/pr
 
 const Product = sequelize.define('list', {
   // attributes
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true
-  },
   title: {
     type: Sequelize.STRING
   },
